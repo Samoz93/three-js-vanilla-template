@@ -22,6 +22,7 @@ class ExperienceCLS {
   sizes = new Sizes();
   scene = new THREE.Scene();
   time = new Time();
+  renderer: Renderer;
 
   resources: Resources;
 

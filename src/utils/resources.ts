@@ -10,13 +10,11 @@ import { Experience } from "../experience";
 
 export default class Resources extends EventEmitter {
   items: Record<string, GLTF> = {};
+  queue = 0;
+  loaded = 0;
 
-  constructor(assets: { type: string; path: string }[]) {
+  constructor(private assets: { type: string; path: string; name: string }[]) {
     super();
-    this.renderer = Experience.renderer;
-
-    this.assets = assets;
-
     this.queue = this.assets.length;
     this.loaded = 0;
 
@@ -34,7 +32,7 @@ export default class Resources extends EventEmitter {
 
     this.loaders.ktx2Loader = new KTX2Loader();
     this.loaders.ktx2Loader.setTranscoderPath("/basis/");
-    this.loaders.ktx2Loader.detectSupport(this.renderer.webglRenderer);
+    this.loaders.ktx2Loader.detectSupport(Experience.renderer.webglRenderer);
 
     this.loaders.textureLoader = new THREE.TextureLoader();
     this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader();
@@ -70,27 +68,25 @@ export default class Resources extends EventEmitter {
           this.singleAssetLoaded(asset, buffer);
         });
       } else if (asset.type === "video") {
-        this.video = {};
-        this.videoTexture = {};
+        const video = {};
+        const videoTexture = {};
 
-        this.video[asset.name] = document.createElement("video");
-        this.video[asset.name].src = asset.path;
-        this.video[asset.name].muted = true;
-        this.video[asset.name].playsInline = true;
-        this.video[asset.name].autoplay = true;
-        this.video[asset.name].loop = true;
-        this.video[asset.name].play();
+        video[asset.name] = document.createElement("video");
+        video[asset.name].src = asset.path;
+        video[asset.name].muted = true;
+        video[asset.name].playsInline = true;
+        video[asset.name].autoplay = true;
+        video[asset.name].loop = true;
+        video[asset.name].play();
 
-        this.videoTexture[asset.name] = new THREE.VideoTexture(
-          this.video[asset.name]
-        );
-        this.videoTexture[asset.name].flipY = true;
-        this.videoTexture[asset.name].minFilter = THREE.NearestFilter;
-        this.videoTexture[asset.name].magFilter = THREE.NearestFilter;
-        this.videoTexture[asset.name].generateMipmaps = false;
-        this.videoTexture[asset.name].encoding = THREE.SRGBColorSpace;
+        videoTexture[asset.name] = new THREE.VideoTexture(video[asset.name]);
+        videoTexture[asset.name].flipY = true;
+        videoTexture[asset.name].minFilter = THREE.NearestFilter;
+        videoTexture[asset.name].magFilter = THREE.NearestFilter;
+        videoTexture[asset.name].generateMipmaps = false;
+        videoTexture[asset.name].encoding = THREE.SRGBColorSpace;
 
-        this.singleAssetLoaded(asset, this.videoTexture[asset.name]);
+        this.singleAssetLoaded(asset, videoTexture[asset.name]);
       }
     }
   }
