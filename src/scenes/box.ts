@@ -4,6 +4,7 @@ import { Object3D } from "three";
 // helpers
 import BakedModel from "../helpers/bakeModel.js";
 import { GlobalUtil } from "../utils/global.js";
+import { ResourcesUtil } from "../utils/resources.js";
 import { TimeUtil } from "../utils/time.js";
 import { ElementAbstract } from "./ElementsAbstract.js";
 
@@ -20,8 +21,8 @@ export default class Box extends ElementAbstract {
 
   bakeBox() {
     this.model = new BakedModel(
-      this.resources.items.boxModel,
-      this.resources.items.boxTexture,
+      ResourcesUtil.items.boxModel,
+      ResourcesUtil.items.boxTexture,
       1
     ).getModel();
   }

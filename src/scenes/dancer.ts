@@ -5,6 +5,7 @@ import { dissolve_frag, dissolve_vertix } from "../shaders";
 
 import { UpdatableObject3D } from "../abstractions";
 import { DissolveShaderService } from "../helpers";
+import { ResourcesUtil } from "../utils/resources";
 
 export default class Dancer extends UpdatableObject3D {
   objectName: string = "dance";
@@ -23,7 +24,7 @@ export default class Dancer extends UpdatableObject3D {
     const dancer = new THREE.Group();
 
     objects.forEach((objName) => {
-      const obj = this.resources.items.dancer.scene?.getObjectByName(
+      const obj = ResourcesUtil.items.dancer.scene?.getObjectByName(
         objName
       ) as THREE.Mesh;
 

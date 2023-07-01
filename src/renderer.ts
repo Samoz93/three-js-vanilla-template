@@ -1,17 +1,17 @@
 import * as THREE from "three";
 import { CameraUtil } from "./camera";
 import { GlobalUtil } from "./utils/global";
-import { Sizes } from "./utils/sizes";
+import { SizesUtil } from "./utils/sizes";
 
 // src
 
-export default class Renderer {
-  constructor() {
+class RendererCls {
+  init = () => {
     this.setRenderer();
-  }
+  };
   webglRenderer: THREE.WebGLRenderer;
 
-  setRenderer() {
+  private setRenderer() {
     this.webglRenderer = new THREE.WebGLRenderer({
       canvas: GlobalUtil.canvas,
       antialias: true,
@@ -23,16 +23,18 @@ export default class Renderer {
     this.webglRenderer.toneMappingExposure = 1.75;
     this.webglRenderer.shadowMap.enabled = true;
     this.webglRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    this.webglRenderer.setSize(Sizes.width, Sizes.height);
-    this.webglRenderer.setPixelRatio(Sizes.pixelRatio);
+    this.webglRenderer.setSize(SizesUtil.width, SizesUtil.height);
+    this.webglRenderer.setPixelRatio(SizesUtil.pixelRatio);
   }
 
   resize() {
-    this.webglRenderer.setSize(Sizes.width, Sizes.height);
-    this.webglRenderer.setPixelRatio(Sizes.pixelRatio);
+    this.webglRenderer.setSize(SizesUtil.width, SizesUtil.height);
+    this.webglRenderer.setPixelRatio(SizesUtil.pixelRatio);
   }
 
   update() {
     this.webglRenderer.render(GlobalUtil.scene, CameraUtil.perspectiveCamera);
   }
 }
+
+export const RendererUtil = new RendererCls();

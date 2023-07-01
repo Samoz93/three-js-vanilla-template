@@ -1,40 +1,38 @@
 // src
 import { CameraUtil } from "./camera.js";
-import Renderer from "./renderer.js";
+import { RendererUtil } from "./renderer.js";
 
 // utils
 import World from "./scenes/world.js";
 import Helpers from "./utils/helpers.js";
-import Resources from "./utils/resources.js";
+import { ResourcesUtil } from "./utils/resources.js";
 // config
 import assets from "./config/assets.js";
-import { Sizes } from "./utils/sizes.js";
+import { SizesUtil } from "./utils/sizes.js";
 import { TimeUtil } from "./utils/time";
 // world
 
 class ExperienceCLS {
-  renderer: Renderer;
-
   resources: Resources;
 
   init = () => {
     CameraUtil.init();
-    this.renderer = new Renderer();
-    this.resources = new Resources(assets);
+    RendererUtil.init();
+    ResourcesUtil.init(assets);
     this.helpers = new Helpers();
     this.world = new World();
 
-    Sizes.on("resize", () => {
+    SizesUtil.on("resize", () => {
       this.resize();
     });
     TimeUtil.on("update", (data) => {
       CameraUtil.update();
-      this.renderer.update();
+      RendererUtil.update();
     });
   };
   resize() {
     CameraUtil.resize();
-    this.renderer.resize();
+    RendererUtil.resize();
   }
 }
 

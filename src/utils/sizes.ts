@@ -22,4 +22,4 @@ class SizesCLS extends EventEmitter {
   }
 }
 
-export const Sizes = new SizesCLS();
+export const SizesUtil = new SizesCLS();

@@ -2,25 +2,29 @@ import { EventEmitter } from "events";
 import * as THREE from "three";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
-import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { KTX2Loader } from "three/examples/jsm/loaders/KTX2Loader.js";
-import { Experience } from "../experience";
+import { RendererUtil } from "../renderer";
 
 // src
 
-export default class Resources extends EventEmitter {
-  items: Record<string, GLTF> = {};
+class Resources extends EventEmitter {
+  items: Record<string, any> = {};
   queue = 0;
   loaded = 0;
-
-  constructor(private assets: { type: string; path: string; name: string }[]) {
+  assets: { type: string; path: string; name: string }[];
+  constructor() {
     super();
+  }
+
+  init = (assets: { type: string; path: string; name: string }[]) => {
+    this.assets = assets;
     this.queue = this.assets.length;
     this.loaded = 0;
 
     this.setLoaders();
     this.startLoading();
-  }
+  };
 
   loaders: any = {};
 
@@ -32,7 +36,7 @@ export default class Resources extends EventEmitter {
 
     this.loaders.ktx2Loader = new KTX2Loader();
     this.loaders.ktx2Loader.setTranscoderPath("/basis/");
-    this.loaders.ktx2Loader.detectSupport(Experience.renderer.webglRenderer);
+    this.loaders.ktx2Loader.detectSupport(RendererUtil.webglRenderer);
 
     this.loaders.textureLoader = new THREE.TextureLoader();
     this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader();
@@ -100,3 +104,5 @@ export default class Resources extends EventEmitter {
     }
   }
 }
+
+export const ResourcesUtil = new Resources();
