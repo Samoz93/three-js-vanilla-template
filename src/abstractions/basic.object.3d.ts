@@ -1,14 +1,10 @@
 import _ from "lodash";
 import { Object3D, Uniform } from "three";
-import { Experience } from "../experience";
 import { addControllers } from "../helpers/gui.controller";
 import { TimeUtil } from "../utils/time";
 
 export abstract class UpdatableObject3D {
   // Utils
-  experience = Experience;
-  resources = Experience.resources;
-  time = Experience.time;
 
   abstract objectName: string;
 

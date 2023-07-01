@@ -1,14 +1,9 @@
 import * as THREE from "three";
-import { Experience } from "../experience";
 import { GlobalUtil } from "../utils/global";
 
 // src
 
 export default class Environment {
-  experience = Experience;
-  resources = Experience.resources;
-  time = Experience.time;
-
   private parameters = {
     sunlight: {
       color: "#ffffff",

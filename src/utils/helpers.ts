@@ -2,15 +2,15 @@ import * as THREE from "three";
 import { GlobalUtil } from "./global";
 
 export default class Helpers {
-  constructor() {
-    this.parameters = {
-      size: 10,
-      divisions: 10,
-    };
+  parameters = {
+    size: 10,
+    divisions: 10,
+  };
 
+  init = () => {
     this.setAxes();
     this.setGrid();
-  }
+  };
 
   setAxes() {
     const axesHelper = new THREE.AxesHelper(this.parameters.size / 2);
@@ -25,3 +25,5 @@ export default class Helpers {
     GlobalUtil.scene.add(gridHelper);
   }
 }
+
+export const HelperUtil = new Helpers();

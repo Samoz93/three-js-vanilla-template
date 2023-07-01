@@ -13,7 +13,7 @@ export default class World {
   environment: Environment;
   objects = [Plane, MySphere, Dancer];
 
-  set(): void {
+  private set(): void {
     ResourcesUtil.on("ready", () => {
       this.environment = new Environment();
       _.forEach(this.objects, (Obj) => {
@@ -23,7 +23,9 @@ export default class World {
     });
   }
 
-  constructor() {
+  init = () => {
     this.set();
-  }
+  };
 }
+
+export const TheWorld = new World();

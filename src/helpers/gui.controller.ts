@@ -15,8 +15,6 @@ export const addControllers = (
     folder = gui.addFolder(folderName);
   }
 
-  console.log(folder._title);
-
   let ctrlRef = folder.controllers.find((ct) => ct._name === key);
 
   if (!ctrlRef) {
