@@ -1,5 +1,3 @@
-import * as THREE from "three";
-
 // src
 import Camera from "./camera.js";
 import Renderer from "./renderer.js";
@@ -8,20 +6,15 @@ import Renderer from "./renderer.js";
 import World from "./scenes/world.js";
 import Helpers from "./utils/helpers.js";
 import Resources from "./utils/resources.js";
-import Sizes from "./utils/sizes";
-import Time from "./utils/time.js";
 // config
 import assets from "./config/assets.js";
-
+import { Sizes } from "./utils/sizes.js";
+import { TimeUtil } from "./utils/time";
 // world
 
 class ExperienceCLS {
-  static instance: ExperienceCLS;
   canvas;
 
-  sizes = new Sizes();
-  scene = new THREE.Scene();
-  time = new Time();
   renderer: Renderer;
 
   resources: Resources;
@@ -34,10 +27,10 @@ class ExperienceCLS {
     this.helpers = new Helpers();
     this.world = new World();
 
-    this.sizes.on("resize", () => {
+    Sizes.on("resize", () => {
       this.resize();
     });
-    this.time.on("update", (data) => {
+    TimeUtil.on("update", (data) => {
       this.camera.update();
       this.renderer.update();
     });

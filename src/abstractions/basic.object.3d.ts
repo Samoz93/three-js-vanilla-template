@@ -2,6 +2,7 @@ import _ from "lodash";
 import { Object3D, Uniform } from "three";
 import { Experience } from "../experience";
 import { addControllers } from "../helpers/gui.controller";
+import { TimeUtil } from "../utils/time";
 
 export abstract class UpdatableObject3D {
   // Utils
@@ -25,7 +26,7 @@ export abstract class UpdatableObject3D {
   abstract update(data: { delta: number; elapsed: number }): void;
 
   constructor() {
-    this.time.on("update", (data: { delta: number; elapsed: number }) => {
+    TimeUtil.on("update", (data: { delta: number; elapsed: number }) => {
       // Update uTime for all the materials if any
       this.materials?.forEach((material) => {
         if (material.uniforms?.uTime) {

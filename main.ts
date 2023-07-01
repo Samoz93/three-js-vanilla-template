@@ -3,5 +3,7 @@ import "./style.css";
 
 // src
 import { Experience } from "./src/experience";
+import { GlobalUtil } from "./src/utils/global";
 
-Experience.init(document.querySelector("canvas.experience-canvas"));
+GlobalUtil.init(document.querySelector("canvas.experience-canvas"));
+Experience.init();

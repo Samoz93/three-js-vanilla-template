@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 
-export default class Sizes extends EventEmitter {
+class SizesCLS extends EventEmitter {
   width = window.innerWidth;
   height = window.innerHeight;
   aspect = this.width / this.height;
@@ -21,3 +21,5 @@ export default class Sizes extends EventEmitter {
     });
   }
 }
+
+export const Sizes = new SizesCLS();

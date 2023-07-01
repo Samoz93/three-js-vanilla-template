@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 
-export default class Time extends EventEmitter {
+class TimeCls extends EventEmitter {
   start = Date.now();
   current = this.start;
   elapsed = 0;
@@ -21,3 +21,5 @@ export default class Time extends EventEmitter {
     window.requestAnimationFrame(() => this.update());
   }
 }
+
+export const TimeUtil = new TimeCls();

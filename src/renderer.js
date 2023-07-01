@@ -1,13 +1,13 @@
 import * as THREE from "three";
 import { Experience } from "./experience";
+import { GlobalUtil } from "./utils/global";
+import { Sizes } from "./utils/sizes";
 
 // src
 
 export default class Renderer {
   constructor() {
-    this.sizes = Experience.sizes;
-    this.scene = Experience.scene;
-    this.canvas = Experience.canvas;
+    this.canvas = GlobalUtil.canvas;
     this.camera = Experience.camera;
 
     this.setRenderer();
@@ -25,16 +25,16 @@ export default class Renderer {
     this.webglRenderer.toneMappingExposure = 1.75;
     this.webglRenderer.shadowMap.enabled = true;
     this.webglRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    this.webglRenderer.setSize(this.sizes.width, this.sizes.height);
-    this.webglRenderer.setPixelRatio(this.sizes.pixelRatio);
+    this.webglRenderer.setSize(Sizes.width, Sizes.height);
+    this.webglRenderer.setPixelRatio(Sizes.pixelRatio);
   }
 
   resize() {
-    this.webglRenderer.setSize(this.sizes.width, this.sizes.height);
-    this.webglRenderer.setPixelRatio(this.sizes.pixelRatio);
+    this.webglRenderer.setSize(Sizes.width, Sizes.height);
+    this.webglRenderer.setPixelRatio(Sizes.pixelRatio);
   }
 
   update() {
-    this.webglRenderer.render(this.scene, this.camera.perspectiveCamera);
+    this.webglRenderer.render(GlobalUtil.scene, this.camera.perspectiveCamera);
   }
 }

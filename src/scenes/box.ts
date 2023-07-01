@@ -3,6 +3,8 @@ import { Object3D } from "three";
 
 // helpers
 import BakedModel from "../helpers/bakeModel.js";
+import { GlobalUtil } from "../utils/global.js";
+import { TimeUtil } from "../utils/time.js";
 import { ElementAbstract } from "./ElementsAbstract.js";
 
 export default class Box extends ElementAbstract {
@@ -26,13 +28,13 @@ export default class Box extends ElementAbstract {
 
   setBox() {
     this.model.position.y = 1;
-    this.scene.add(this.model);
+    GlobalUtil.scene.add(this.model);
   }
 
   animateBox() {
-    this.model.rotation.x = this.time.elapsed * 0.0005;
-    this.model.rotation.y = this.time.elapsed * 0.0005;
-    this.model.rotation.z = this.time.elapsed * 0.0005;
+    this.model.rotation.x = TimeUtil.elapsed * 0.0005;
+    this.model.rotation.y = TimeUtil.elapsed * 0.0005;
+    this.model.rotation.z = TimeUtil.elapsed * 0.0005;
   }
 
   resize() {}

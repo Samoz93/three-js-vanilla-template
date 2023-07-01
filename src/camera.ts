@@ -1,15 +1,12 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { Experience } from "./experience";
+import { GlobalUtil } from "./utils/global";
+import { Sizes } from "./utils/sizes";
 
 // src
 
 export default class Camera {
   constructor() {
-    this.sizes = Experience.sizes;
-    this.scene = Experience.scene;
-    this.canvas = Experience.canvas;
-
     this.createPerspectiveCamera();
     this.createOrthographicCamera();
     this.setOrbitControls();
@@ -18,7 +15,7 @@ export default class Camera {
   createPerspectiveCamera() {
     this.perspectiveCamera = new THREE.PerspectiveCamera(
       35,
-      this.sizes.aspect,
+      Sizes.aspect,
       0.1,
       1000
     );
@@ -26,24 +23,27 @@ export default class Camera {
     this.perspectiveCamera.position.y = 7.5;
     this.perspectiveCamera.position.z = 10;
 
-    this.scene.add(this.perspectiveCamera);
+    GlobalUtil.scene.add(this.perspectiveCamera);
   }
 
   createOrthographicCamera() {
     this.orthographicCamera = new THREE.OrthographicCamera(
-      (-this.sizes.aspect * this.sizes.frustrum) / 2,
-      (this.sizes.aspect * this.sizes.frustrum) / 2,
-      this.sizes.frustrum / 2,
-      -this.sizes.frustrum / 2,
+      (-Sizes.aspect * Sizes.frustrum) / 2,
+      (Sizes.aspect * Sizes.frustrum) / 2,
+      Sizes.frustrum / 2,
+      -Sizes.frustrum / 2,
       -100,
       100
     );
 
-    this.scene.add(this.orthographicCamera);
+    GlobalUtil.scene.add(this.orthographicCamera);
   }
 
   setOrbitControls() {
-    this.orbitControls = new OrbitControls(this.perspectiveCamera, this.canvas);
+    this.orbitControls = new OrbitControls(
+      this.perspectiveCamera,
+      GlobalUtil.canvas
+    );
     this.orbitControls.enableDamping = true;
     this.orbitControls.enableZoom = true;
     this.orbitControls.enablePan = false;
@@ -52,15 +52,13 @@ export default class Camera {
   }
 
   resize() {
-    this.perspectiveCamera.aspect = this.sizes.aspect;
+    this.perspectiveCamera.aspect = Sizes.aspect;
     this.perspectiveCamera.updateProjectionMatrix();
 
-    this.orthographicCamera.left =
-      (-this.sizes.aspect * this.sizes.frustrum) / 2;
-    this.orthographicCamera.right =
-      (this.sizes.aspect * this.sizes.frustrum) / 2;
-    this.orthographicCamera.top = this.sizes.frustrum / 2;
-    this.orthographicCamera.bottom = -this.sizes.frustrum / 2;
+    this.orthographicCamera.left = (-Sizes.aspect * Sizes.frustrum) / 2;
+    this.orthographicCamera.right = (Sizes.aspect * Sizes.frustrum) / 2;
+    this.orthographicCamera.top = Sizes.frustrum / 2;
+    this.orthographicCamera.bottom = -Sizes.frustrum / 2;
     this.orthographicCamera.updateProjectionMatrix();
   }
 

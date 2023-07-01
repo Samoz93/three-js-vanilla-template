@@ -1,10 +1,8 @@
 import * as THREE from "three";
-import { Experience } from "../experience";
+import { GlobalUtil } from "./global";
 
 export default class Helpers {
   constructor() {
-    this.scene = Experience.scene;
-
     this.parameters = {
       size: 10,
       divisions: 10,
@@ -16,7 +14,7 @@ export default class Helpers {
 
   setAxes() {
     const axesHelper = new THREE.AxesHelper(this.parameters.size / 2);
-    this.scene.add(axesHelper);
+    GlobalUtil.scene.add(axesHelper);
   }
 
   setGrid() {
@@ -24,6 +22,6 @@ export default class Helpers {
       this.parameters.size,
       this.parameters.divisions
     );
-    this.scene.add(gridHelper);
+    GlobalUtil.scene.add(gridHelper);
   }
 }

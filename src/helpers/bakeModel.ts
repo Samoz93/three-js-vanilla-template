@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { GlobalUtil } from "../utils/global";
 
 export default class BakedModel {
   material: THREE.MeshBasicMaterial;
@@ -15,7 +16,7 @@ export default class BakedModel {
       map: this.texture,
     });
 
-    this.model.scene.traverse((child) => {
+    GlobalUtil.scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
         if (scale) child.scale.set(scale, scale, scale);
         child.material.map = this.texture;

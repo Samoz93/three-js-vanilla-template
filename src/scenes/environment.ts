@@ -1,11 +1,11 @@
 import * as THREE from "three";
 import { Experience } from "../experience";
+import { GlobalUtil } from "../utils/global";
 
 // src
 
 export default class Environment {
   experience = Experience;
-  scene = Experience.scene;
   resources = Experience.resources;
   time = Experience.time;
 
@@ -48,7 +48,7 @@ export default class Environment {
       this.parameters.sunlight.position.y,
       this.parameters.sunlight.position.z
     );
-    this.scene.add(this.sunLight);
+    GlobalUtil.scene.add(this.sunLight);
   }
 
   private setAmbientLight() {
@@ -66,9 +66,9 @@ export default class Environment {
     light1.shadow.bias = 0.001;
 
     light1.lookAt(0, 0, 0);
-    this.scene.add(light1);
+    GlobalUtil.scene.add(light1);
 
-    this.scene.add(this.ambientLight);
+    GlobalUtil.scene.add(this.ambientLight);
   }
 
   private setFog() {
@@ -76,7 +76,7 @@ export default class Environment {
       this.parameters.fog.color,
       this.parameters.fog.intensity
     );
-    this.scene.fog = this.fog;
+    GlobalUtil.scene.fog = this.fog;
   }
 
   set(): void {
