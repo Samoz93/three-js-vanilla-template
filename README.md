@@ -1,15 +1,9 @@
 # Three.js Boilerplate
 
-A boilerplate/starter project for quickly building three.js app using Vite & Three.
+A Template to start coding with Threejs on the fly, using vite + TS
+Forked from https://github.com/bibashmgr/three-js-boilerplate and refactored slowly to TS
 
 ## Quick Start:
-
-**Clone the repo:**
-
-```
-git clone --depth 1 https://github.com/bibashmgr/three-js-boilerplate
-cd three-js-boilerplate
-```
 
 **Install the dependencies:**
 
@@ -53,3 +47,5 @@ index.html
 main.js
 style.css
 ```
+
+---
