@@ -2,7 +2,7 @@
 
 // scenes
 import _ from "lodash";
-import Experience from "../experience.js";
+import { Experience } from "../experience.js";
 import Dancer from "./dancer.js";
 import Environment from "./environment.js";
 import Plane from "./plane.js";
@@ -13,7 +13,7 @@ export default class World {
   objects = [Plane, MySphere, Dancer];
 
   set(): void {
-    const { resources, scene } = new Experience("");
+    const { resources, scene } = Experience;
     resources.on("ready", () => {
       this.environment = new Environment();
       _.forEach(this.objects, (Obj) => {

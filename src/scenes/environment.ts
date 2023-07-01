@@ -1,10 +1,10 @@
 import * as THREE from "three";
-import Experience from "../experience";
+import { Experience } from "../experience";
 
 // src
 
 export default class Environment {
-  experience = new Experience("");
+  experience = Experience;
   scene = this.experience.scene;
   resources = this.experience.resources;
   time = this.experience.time;

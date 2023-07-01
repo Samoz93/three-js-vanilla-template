@@ -1,11 +1,12 @@
 import * as THREE from "three";
 
 // src
-import Experience from "./experience";
+import { Experience } from "./experience";
 
 export default class Renderer {
   constructor() {
-    this.experience = new Experience();
+    this.experience = Experience;
+
     this.sizes = this.experience.sizes;
     this.scene = this.experience.scene;
     this.canvas = this.experience.canvas;

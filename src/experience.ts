@@ -15,8 +15,9 @@ import assets from "./config/assets.js";
 
 // world
 
-export default class Experience {
-  static instance: Experience;
+class ExperienceCLS {
+  static instance: ExperienceCLS;
+  canvas;
 
   sizes = new Sizes();
   scene = new THREE.Scene();
@@ -24,12 +25,8 @@ export default class Experience {
 
   resources: Resources;
 
-  constructor(private canvas) {
-    if (Experience.instance) {
-      return Experience.instance;
-    }
-
-    Experience.instance = this;
+  init = (canvas) => {
+    this.canvas = canvas;
     this.camera = new Camera();
     this.renderer = new Renderer();
     this.resources = new Resources(assets);
@@ -43,11 +40,11 @@ export default class Experience {
       this.camera.update();
       this.renderer.update();
     });
-  }
-
+  };
   resize() {
     this.camera.resize();
     this.renderer.resize();
-    this.world.resize();
   }
 }
+
+export const Experience = new ExperienceCLS();

@@ -1,13 +1,13 @@
 import { EventEmitter } from "events";
 
 export default class Time extends EventEmitter {
+  start = Date.now();
+  current = this.start;
+  elapsed = 0;
+  delta = 16;
+
   constructor() {
     super();
-    this.start = Date.now();
-    this.current = this.start;
-    this.elapsed = 0;
-    this.delta = 16;
-
     this.update();
   }
 

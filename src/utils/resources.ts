@@ -6,14 +6,14 @@ import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { KTX2Loader } from "three/examples/jsm/loaders/KTX2Loader.js";
 
 // src
-import Experience from "../experience";
+import { Experience } from "../experience";
 
 export default class Resources extends EventEmitter {
   items: Record<string, GLTF> = {};
 
   constructor(assets: { type: string; path: string }[]) {
     super();
-    this.experience = new Experience("");
+    this.experience = Experience;
     this.renderer = this.experience.renderer;
 
     this.assets = assets;
