@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { Experience } from "./experience";
+import { CameraUtil } from "./camera";
 import { GlobalUtil } from "./utils/global";
 import { Sizes } from "./utils/sizes";
 
@@ -7,15 +7,13 @@ import { Sizes } from "./utils/sizes";
 
 export default class Renderer {
   constructor() {
-    this.canvas = GlobalUtil.canvas;
-    this.camera = Experience.camera;
-
     this.setRenderer();
   }
+  webglRenderer: THREE.WebGLRenderer;
 
   setRenderer() {
     this.webglRenderer = new THREE.WebGLRenderer({
-      canvas: this.canvas,
+      canvas: GlobalUtil.canvas,
       antialias: true,
     });
 
@@ -35,6 +33,6 @@ export default class Renderer {
   }
 
   update() {
-    this.webglRenderer.render(GlobalUtil.scene, this.camera.perspectiveCamera);
+    this.webglRenderer.render(GlobalUtil.scene, CameraUtil.perspectiveCamera);
   }
 }

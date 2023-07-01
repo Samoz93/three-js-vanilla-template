@@ -1,5 +1,5 @@
 // src
-import Camera from "./camera.js";
+import { CameraUtil } from "./camera.js";
 import Renderer from "./renderer.js";
 
 // utils
@@ -13,15 +13,12 @@ import { TimeUtil } from "./utils/time";
 // world
 
 class ExperienceCLS {
-  canvas;
-
   renderer: Renderer;
 
   resources: Resources;
 
-  init = (canvas) => {
-    this.canvas = canvas;
-    this.camera = new Camera();
+  init = () => {
+    CameraUtil.init();
     this.renderer = new Renderer();
     this.resources = new Resources(assets);
     this.helpers = new Helpers();
@@ -31,12 +28,12 @@ class ExperienceCLS {
       this.resize();
     });
     TimeUtil.on("update", (data) => {
-      this.camera.update();
+      CameraUtil.update();
       this.renderer.update();
     });
   };
   resize() {
-    this.camera.resize();
+    CameraUtil.resize();
     this.renderer.resize();
   }
 }

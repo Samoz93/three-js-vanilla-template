@@ -5,13 +5,16 @@ import { Sizes } from "./utils/sizes";
 
 // src
 
-export default class Camera {
-  constructor() {
+class CameraCls {
+  perspectiveCamera: THREE.PerspectiveCamera;
+  orthographicCamera: THREE.OrthographicCamera;
+  orbitControls: OrbitControls;
+
+  init() {
     this.createPerspectiveCamera();
     this.createOrthographicCamera();
     this.setOrbitControls();
   }
-
   createPerspectiveCamera() {
     this.perspectiveCamera = new THREE.PerspectiveCamera(
       35,
@@ -66,3 +69,5 @@ export default class Camera {
     this.orbitControls.update();
   }
 }
+
+export const CameraUtil = new CameraCls();
