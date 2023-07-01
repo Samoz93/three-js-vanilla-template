@@ -7,11 +7,12 @@ import { ResourcesUtil } from "../utils/resources.js";
 import Dancer from "./dancer.js";
 import Environment from "./environment.js";
 import Plane from "./plane.js";
+import PlaneStripe from "./planeStripe.js";
 import MySphere from "./sphere.js";
 
 export default class World {
   environment: Environment;
-  objects = [Plane, MySphere, Dancer];
+  objects = [Plane, MySphere, Dancer, PlaneStripe];
 
   private set(): void {
     ResourcesUtil.on("ready", () => {

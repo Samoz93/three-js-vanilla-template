@@ -39,6 +39,7 @@ export abstract class UpdatableObject3D {
     if (_.isEmpty(this.uniforms)) return;
 
     _.forEach(this.uniforms, (val, unifromKey) => {
+      if (unifromKey === "uTime") return;
       const controllerName = this.getControllerName(unifromKey);
       addControllers(this.objectName ?? "unknown", controllerName, (val) => {
         this.uniforms[unifromKey].value = val;

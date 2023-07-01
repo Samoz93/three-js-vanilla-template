@@ -17,7 +17,7 @@ class CameraCls {
   }
   createPerspectiveCamera() {
     this.perspectiveCamera = new THREE.PerspectiveCamera(
-      35,
+      50,
       SizesUtil.aspect,
       0.1,
       1000
@@ -25,7 +25,6 @@ class CameraCls {
     this.perspectiveCamera.position.x = 5;
     this.perspectiveCamera.position.y = 7.5;
     this.perspectiveCamera.position.z = 10;
-
     GlobalUtil.scene.add(this.perspectiveCamera);
   }
 
@@ -49,9 +48,8 @@ class CameraCls {
     );
     this.orbitControls.enableDamping = true;
     this.orbitControls.enableZoom = true;
-    this.orbitControls.enablePan = false;
+    this.orbitControls.enablePan = true;
     this.orbitControls.maxPolarAngle = Math.PI / 2;
-    this.orbitControls.target.set(0, 0, 0);
   }
 
   resize() {

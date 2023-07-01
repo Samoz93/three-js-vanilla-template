@@ -42,6 +42,7 @@ export default class Dancer extends UpdatableObject3D {
       obj.material = shaderService.customShaderMaterial;
       obj.customDepthMaterial = shaderService.depthMaterial;
 
+      obj.castShadow = true;
       dancer.add(obj);
 
       this.geometries.push(obj.geometry);
