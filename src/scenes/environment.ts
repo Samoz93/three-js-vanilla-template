@@ -5,9 +5,9 @@ import { Experience } from "../experience";
 
 export default class Environment {
   experience = Experience;
-  scene = this.experience.scene;
-  resources = this.experience.resources;
-  time = this.experience.time;
+  scene = Experience.scene;
+  resources = Experience.resources;
+  time = Experience.time;
 
   private parameters = {
     sunlight: {

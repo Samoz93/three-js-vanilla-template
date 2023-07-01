@@ -1,16 +1,14 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { Experience } from "./experience";
 
 // src
-import { Experience } from "./experience";
 
 export default class Camera {
   constructor() {
-    this.experience = Experience;
-
-    this.sizes = this.experience.sizes;
-    this.scene = this.experience.scene;
-    this.canvas = this.experience.canvas;
+    this.sizes = Experience.sizes;
+    this.scene = Experience.scene;
+    this.canvas = Experience.canvas;
 
     this.createPerspectiveCamera();
     this.createOrthographicCamera();

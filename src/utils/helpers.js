@@ -1,13 +1,9 @@
 import * as THREE from "three";
-
-// src
 import { Experience } from "../experience";
 
 export default class Helpers {
   constructor() {
-    this.experience = Experience;
-
-    this.scene = this.experience.scene;
+    this.scene = Experience.scene;
 
     this.parameters = {
       size: 10,

@@ -6,8 +6,8 @@ import { addControllers } from "../helpers/gui.controller";
 export abstract class UpdatableObject3D {
   // Utils
   experience = Experience;
-  resources = this.experience.resources;
-  time = this.experience.time;
+  resources = Experience.resources;
+  time = Experience.time;
 
   abstract objectName: string;
 
