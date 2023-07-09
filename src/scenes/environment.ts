@@ -51,17 +51,25 @@ export default class Environment {
       this.parameters.ambientlight.color,
       this.parameters.ambientlight.intensity
     );
-    const light1 = new THREE.DirectionalLight("blue", 0.5);
+    const light1 = new THREE.DirectionalLight("white", 0.5);
+    const light2 = new THREE.DirectionalLight("white", 0.9);
     light1.position.y = 4;
     light1.position.x = 2;
     light1.position.z = 2;
+
+    light2.position.x = 4;
+    light2.position.y = 0;
+    light2.position.z = -10;
+
     light1.castShadow = true;
     light1.shadow.camera.far = 20;
     light1.shadow.camera.near = 1;
     light1.shadow.bias = 0.001;
 
     light1.lookAt(0, 0, 0);
+    light2.lookAt(0, 0, 0);
     GlobalUtil.scene.add(light1);
+    GlobalUtil.scene.add(light2);
 
     GlobalUtil.scene.add(this.ambientLight);
   }

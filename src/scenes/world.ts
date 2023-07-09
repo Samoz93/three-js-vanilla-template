@@ -4,15 +4,13 @@
 import _ from "lodash";
 import { GlobalUtil } from "../utils/global.js";
 import { ResourcesUtil } from "../utils/resources.js";
-import Dancer from "./dancer.js";
 import Environment from "./environment.js";
 import Plane from "./plane.js";
-import PlaneStripe from "./planeStripe.js";
-import MySphere from "./sphere.js";
+import TengentsObject from "./tengents.js";
 
 export default class World {
   environment: Environment;
-  objects = [Plane, MySphere, Dancer, PlaneStripe];
+  objects = [Plane, TengentsObject];
 
   private set(): void {
     ResourcesUtil.on("ready", () => {

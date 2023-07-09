@@ -7,7 +7,9 @@ export const gui = new GUI();
 export const addControllers = (
   folderName: string,
   key: string,
-  cb: (val) => void
+  cb: (val) => void,
+  value: number = 0,
+  options: { min; max; steps } = { min: 0, max: 1, steps: 0.01 }
 ) => {
   let folder = gui.folders.find((f) => f._title === folderName);
 
@@ -18,8 +20,14 @@ export const addControllers = (
   let ctrlRef = folder.controllers.find((ct) => ct._name === key);
 
   if (!ctrlRef) {
-    controllers[key] = 0;
-    ctrlRef = folder.add(controllers, key, 0, 1, 0.01);
+    controllers[key] = value ?? 0;
+    ctrlRef = folder.add(
+      controllers,
+      key,
+      options.min,
+      options.max,
+      options.steps
+    );
   }
 
   ctrlRef.onChange(cb);

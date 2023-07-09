@@ -5,7 +5,7 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { KTX2Loader } from "three/examples/jsm/loaders/KTX2Loader.js";
 import { RendererUtil } from "../renderer";
-
+import { ResourcesTypes } from "../types";
 // src
 
 class Resources extends EventEmitter {
@@ -17,7 +17,7 @@ class Resources extends EventEmitter {
     super();
   }
 
-  init = (assets: { type: string; path: string; name: string }[]) => {
+  init = (assets: { type: ResourcesTypes; path: string; name: string }[]) => {
     this.assets = assets;
     this.queue = this.assets.length;
     this.loaded = 0;
@@ -31,7 +31,9 @@ class Resources extends EventEmitter {
   setLoaders() {
     this.loaders.gltfLoader = new GLTFLoader();
     this.loaders.dracoLoader = new DRACOLoader();
-    this.loaders.dracoLoader.setDecoderPath("/draco/");
+    this.loaders.dracoLoader.setDecoderPath(
+      "../../node_modules/three/examples/jsm/libs/draco/"
+    );
     this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader);
 
     this.loaders.ktx2Loader = new KTX2Loader();
@@ -97,6 +99,7 @@ class Resources extends EventEmitter {
 
   singleAssetLoaded(asset, file) {
     this.items[asset.name] = file;
+
     this.loaded++;
 
     if (this.loaded === this.queue) {

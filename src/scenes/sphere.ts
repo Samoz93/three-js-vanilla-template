@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { dissolve_frag, dissolve_vertix } from "../shaders";
 
 import { UpdatableObject3D } from "../abstractions";
-import { DissolveShaderService } from "../helpers";
+import { ShaderService } from "../helpers";
 
 export default class MySphere extends UpdatableObject3D {
   objectName: string = "Sphere";
@@ -22,7 +22,7 @@ export default class MySphere extends UpdatableObject3D {
 
   set() {
     // Sphere data
-    const shaderService = new DissolveShaderService(
+    const shaderService = new ShaderService(
       {
         frag: dissolve_frag,
         vertix: dissolve_vertix,

@@ -1,1 +1,1 @@
-export * from "./dissolve.shader.service";
+export * from "./shader.service";

@@ -1,5 +1,6 @@
 // src
 import { CameraUtil } from "./camera.js";
+import { assets } from "./config";
 import { RendererUtil } from "./renderer.js";
 
 // utils
@@ -7,7 +8,6 @@ import { TheWorld } from "./scenes/world.js";
 import { HelperUtil } from "./utils/helpers.js";
 import { ResourcesUtil } from "./utils/resources.js";
 // config
-import assets from "./config/assets.js";
 import { SizesUtil } from "./utils/sizes.js";
 import { TimeUtil } from "./utils/time";
 // world

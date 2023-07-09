@@ -14,7 +14,11 @@ export abstract class UpdatableObject3D {
   materials: (THREE.Material | THREE.ShaderMaterial)[] = [];
 
   // Uniforms
-  uniforms: Record<string, Uniform | { value: number }> = {};
+  uniforms: Record<
+    string,
+    | Uniform
+    | { value: number; options?: { min: number; max: number; steps: number } }
+  > = {};
 
   // abstract methods
   abstract set(): void;
@@ -41,9 +45,15 @@ export abstract class UpdatableObject3D {
     _.forEach(this.uniforms, (val, unifromKey) => {
       if (unifromKey === "uTime") return;
       const controllerName = this.getControllerName(unifromKey);
-      addControllers(this.objectName ?? "unknown", controllerName, (val) => {
-        this.uniforms[unifromKey].value = val;
-      });
+      addControllers(
+        this.objectName ?? "unknown",
+        controllerName,
+        (val) => {
+          this.uniforms[unifromKey].value = val;
+        },
+        val.value,
+        val.options
+      );
     });
   };
 

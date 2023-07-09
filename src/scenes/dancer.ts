@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { dissolve_frag, dissolve_vertix } from "../shaders";
 
 import { UpdatableObject3D } from "../abstractions";
-import { DissolveShaderService } from "../helpers";
+import { ShaderService } from "../helpers";
 import { ResourcesUtil } from "../utils/resources";
 
 export default class Dancer extends UpdatableObject3D {
@@ -29,7 +29,7 @@ export default class Dancer extends UpdatableObject3D {
       ) as THREE.Mesh;
 
       // Sphere data
-      const shaderService = new DissolveShaderService(
+      const shaderService = new ShaderService(
         {
           frag: dissolve_frag,
           vertix: dissolve_vertix,
