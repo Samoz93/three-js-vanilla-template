@@ -36,6 +36,11 @@ export const assets: { type: ResourcesTypes; path: string; name: string }[] = [
     type: "normalTexture",
     path: "textures/iw_texture.jpeg",
   },
+  {
+    name: "colorful_texture",
+    type: "normalTexture",
+    path: "textures/colorful.avif",
+  },
   // {
   //   name: "dna",
   //   type: "glbModel",

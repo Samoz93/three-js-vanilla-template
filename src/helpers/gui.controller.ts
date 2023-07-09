@@ -24,9 +24,9 @@ export const addControllers = (
     ctrlRef = folder.add(
       controllers,
       key,
-      options.min,
-      options.max,
-      options.steps
+      options.min ?? 0,
+      options.max ?? 1,
+      options.steps ?? 0.1
     );
   }
 

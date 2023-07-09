@@ -6,11 +6,10 @@ import { GlobalUtil } from "../utils/global.js";
 import { ResourcesUtil } from "../utils/resources.js";
 import Environment from "./environment.js";
 import Plane from "./plane.js";
-import TengentsObject from "./tengents.js";
 
 export default class World {
   environment: Environment;
-  objects = [Plane, TengentsObject];
+  objects = [Plane];
 
   private set(): void {
     ResourcesUtil.on("ready", () => {

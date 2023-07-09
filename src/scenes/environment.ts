@@ -1,6 +1,6 @@
 import * as THREE from "three";
+import { CameraUtil } from "../camera";
 import { GlobalUtil } from "../utils/global";
-
 // src
 
 export default class Environment {
@@ -68,7 +68,7 @@ export default class Environment {
 
     light1.lookAt(0, 0, 0);
     light2.lookAt(0, 0, 0);
-    GlobalUtil.scene.add(light1);
+    CameraUtil.perspectiveCamera.add(light1);
     GlobalUtil.scene.add(light2);
 
     GlobalUtil.scene.add(this.ambientLight);
