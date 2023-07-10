@@ -30,7 +30,7 @@ export abstract class UpdatableObject3D {
       // Update uTime for all the materials if any
       this.materials?.forEach((material) => {
         if (material.uniforms?.uTime) {
-          material.uniforms.uTime.value += data.delta * 0.01;
+          material.uniforms.uTime.value += data.delta * 0.0001;
         }
       });
 

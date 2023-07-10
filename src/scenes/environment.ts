@@ -51,8 +51,8 @@ export default class Environment {
       this.parameters.ambientlight.color,
       this.parameters.ambientlight.intensity
     );
-    const light1 = new THREE.DirectionalLight("white", 0.5);
-    const light2 = new THREE.DirectionalLight("white", 0.9);
+    const light1 = new THREE.DirectionalLight("white", 0.1);
+    const light2 = new THREE.DirectionalLight("white", 0.1);
     light1.position.y = 4;
     light1.position.x = 2;
     light1.position.z = 2;

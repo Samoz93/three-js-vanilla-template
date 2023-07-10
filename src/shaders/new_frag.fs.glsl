@@ -31,8 +31,8 @@ void main() {
     vec3 color = vec3(line );
     color = vec3(circle );
     color = vec3(box );
-    vec4 tex = texture2D(uImage, vUv);
-    color = tex.rgb;
+    vec4 tex = texture2D(uImage, vUv );
+    color = tex.rgb + vNormal;
     gl_FragColor =  vec4(color,1.);
 }
 
