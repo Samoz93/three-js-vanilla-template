@@ -39,7 +39,7 @@ void main() {
         Color(vec3(.01,0.05,0.2), 1.0)
     );
 
-    COLOR_RAMP(colors, vPattern, color);
+    COLOR_RAMP(colors, max(0.006,vPattern), color);
 
     gl_FragColor =  vec4(color,1.);
     // csm_DiffuseColor = gl_FragColor;
