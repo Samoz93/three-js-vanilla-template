@@ -31,9 +31,7 @@ class Resources extends EventEmitter {
   setLoaders() {
     this.loaders.gltfLoader = new GLTFLoader();
     this.loaders.dracoLoader = new DRACOLoader();
-    this.loaders.dracoLoader.setDecoderPath(
-      "../../node_modules/three/examples/jsm/libs/draco/"
-    );
+    this.loaders.dracoLoader.setDecoderPath("/draco/");
     this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader);
 
     this.loaders.ktx2Loader = new KTX2Loader();
