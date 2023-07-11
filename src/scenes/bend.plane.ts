@@ -5,6 +5,7 @@ export default class BendedPlane extends UpdatableObject3D {
   objectName: string = "BendedPlane";
 
   planSize = 4;
+
   uniforms = {
     uRadius: { value: this.planSize / 2, options: { min: 0, max: 10 } },
   };

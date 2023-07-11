@@ -1,3 +1,5 @@
+import audio_frag from "./audio.fs.glsl";
+import audio_vertix from "./audio.vs.glsl";
 import bend_frag from "./bend.fs.glsl";
 import bend_vertix from "./bend.vs.glsl";
 import dissolve_frag from "./dissolve_frag.glsl";
@@ -12,6 +14,8 @@ import tengents_vertix from "./tegents.vs.glsl";
 import tengents_frag from "./tengents.fs.glsl";
 
 export {
+  audio_frag,
+  audio_vertix,
   bend_frag,
   bend_vertix,
   dissolve_frag,
