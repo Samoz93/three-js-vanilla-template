@@ -7,6 +7,7 @@ varying float vPattern;
 const float PI = 3.141592653589793238;
 
 
+int windows = 0;
 vec2 m = vec2(.2,.6);
 
 float hash( in vec2 p ) 
@@ -35,7 +36,7 @@ float gavoronoi3(in vec2 p)
     vec2 ip = floor(p);
     vec2 fp = fract(p);
     float f = 3.*PI;//frequency
-    float v = 1.;//cell variability <1.
+    float v = .9;//cell variability <1.
     float dv = 0.;//direction variability <1.
     vec2 dir = vec2(1.3) + sin(time );//vec2(.7,.7);
     float va = 0.0;
@@ -89,16 +90,19 @@ float fbmabs( vec2 p ) {
 }
 
 float map(vec2 p){
-    return 2.*abs( noise(p*2.));
+    if(windows==0)return noise(p*8.);
+    if(windows==1)return 1.*abs( noise(p*10.));
+	if(windows==2)return fbm(p)+1.;
+    return 1.-fbmabs(p);
 }
 
 vec3 nor(in vec2 p)
 {
-	const vec2 e = vec2(0.1, 0.0);
+	const vec2 e = vec2(0.002, 0.0);
 	return -normalize(vec3(
 		map(p + e.xy) - map(p - e.xy),
 		map(p + e.yx) - map(p - e.yx),
-		1.));
+		.15));
 }
 
 
@@ -108,8 +112,8 @@ void main() {
 
     vec3 light = normalize(vec3(3., 2., -1.));
 	float r = dot(nor(uv), light);
-    float displacement = clamp(r,0.,0.3) + uFrequency;
-    pos+= normal * displacement;
+    float displacement = clamp(r,0.,0.3) + uFrequency * .5;
+    pos+= normal * r  * displacement;
     gl_Position =  projectionMatrix  * modelViewMatrix * vec4(pos, 1.0);
     // csm_PositionRaw =  gl_Position;
     vUv = uv;

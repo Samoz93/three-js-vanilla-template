@@ -26,7 +26,7 @@ struct Color{
 void main() {
     float freqTime = uTime * (1. + uFrequency );
     vec3 color ;
-    vec3 mainColor = mix(vec3(0.2549, 0.2471, 0.1412),vec3(0.9529, 0.7725, 0.7725),uFrequency * 1.5);
+    vec3 mainColor = mix(vec3(0.2549, 0.2471, 0.1412),vec3(0.9529, 0.7725, 0.7725),uFrequency);
 
     mainColor.r *= 0.6 + sin(freqTime) * .3;
     mainColor.g *= 1.2 + cos(freqTime * .1) * .6;

@@ -1,10 +1,10 @@
 import * as THREE from "three";
 import { UpdatableObject3D } from "../abstractions";
-import { AudioVisualizerController } from "../helpers";
-import { audio_frag, audio_vertix } from "../shaders";
+import { AudioVisController, AudioVisualizerController } from "../helpers";
+import { audio_frag_V2, audio_vertix_v2 } from "../shaders";
 
-export default class AudioVis extends UpdatableObject3D {
-  objectName: string = "AudioVis";
+export default class AudioVisV2 extends UpdatableObject3D {
+  objectName: string = "AudioVisV2";
   private uFrequency = "uFrequency";
   uniforms = {
     uRadius: { value: 1, options: { min: 0, max: 10 } },
@@ -12,7 +12,7 @@ export default class AudioVis extends UpdatableObject3D {
     [this.uFrequency]: { value: 0 },
   };
 
-  visualizer = AudioVisualizerController;
+  visualizer: AudioVisController = AudioVisualizerController;
 
   constructor() {
     super();
@@ -23,8 +23,8 @@ export default class AudioVis extends UpdatableObject3D {
   set() {
     const geometry = new THREE.IcosahedronGeometry(1, 100);
     const material = new THREE.ShaderMaterial({
-      vertexShader: audio_vertix,
-      fragmentShader: audio_frag,
+      vertexShader: audio_vertix_v2,
+      fragmentShader: audio_frag_V2,
       uniforms: { ...this.uniforms },
       wireframe: false,
       side: THREE.DoubleSide,
@@ -40,9 +40,10 @@ export default class AudioVis extends UpdatableObject3D {
     wireFrame.scale.setScalar(1 + WIREFRAME_DELTA);
     this.mesh.add(this.visualizer.listener);
     this.visualizer.load("/audio/satara.mp3");
+
     this.mesh.add(wireFrame);
     this.mesh.position.y = 2;
-    this.mesh.position.x = 3;
+    this.mesh.position.x = -2;
     this.mesh.receiveShadow = true;
     this.geometries.push(geometry);
     this.materials.push(material);
@@ -58,7 +59,7 @@ export default class AudioVis extends UpdatableObject3D {
       );
 
       this.mesh.rotation.x -=
-        delta * 0.0005 + this.visualizer.getFrequency() * 0.005;
+        delta * 0.0005 + this.visualizer.getFrequency() * 0.003;
     }
     // this.mesh.position.z += Math.cos(elapsed);
   }
