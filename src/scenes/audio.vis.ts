@@ -39,7 +39,6 @@ export default class AudioVis extends UpdatableObject3D {
     const WIREFRAME_DELTA = 0.05;
     wireFrame.scale.setScalar(1 + WIREFRAME_DELTA);
     this.mesh.add(this.visualizer.listener);
-    this.visualizer.load("/audio/best-time.mp3");
     this.mesh.add(wireFrame);
     this.mesh.position.y = 2;
     this.mesh.position.x = 3;

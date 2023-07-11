@@ -16,6 +16,7 @@
     "vite-plugin-glsl": "^1.1.2"
   },
   "dependencies": {
+    "bootstrap": "^5.3.0",
     "gsap": "^3.12.2",
     "lil-gui": "^0.18.2",
     "nice-color-palettes": "^3.0.0",

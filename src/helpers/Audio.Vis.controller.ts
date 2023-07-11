@@ -1,14 +1,15 @@
 import { gsap } from "gsap";
 import * as THREE from "three";
 
-export class AudioVisController {
+class AudioVisController {
   listener = new THREE.AudioListener();
   private sound = new THREE.Audio(this.listener);
   private loader = new THREE.AudioLoader();
   private analyser = new THREE.AudioAnalyser(this.sound, 32);
 
   load(path: string) {
-    if (this.loader.path === path) return;
+    this.sound.stop();
+
     this.loader.load(path, (buffer) => {
       this.sound.setBuffer(buffer);
       this.sound.setLoop(true);
