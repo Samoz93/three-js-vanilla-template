@@ -51,6 +51,7 @@ export default class Dancer extends UpdatableObject3D {
 
     dancer.scale.set(0.01, 0.01, 0.01);
     dancer.position.y = 2;
+    dancer.position.x = 10;
     this.mesh = dancer;
   }
 

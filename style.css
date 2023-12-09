@@ -13,11 +13,15 @@ body {
   position: fixed;
   width: 100vw;
   height: 100vh;
+  background-color: transparent;
+  z-index: 0;
 }
 
 .experience-canvas {
   width: 100%;
   height: 100%;
+  background-color: transparent;
+  z-index: 0;
 }
 
 .musicList {
@@ -25,4 +29,12 @@ body {
   z-index: 1;
   font-size: 50px;
   padding: 10px;
+}
+
+#cam-el {
+  height: 200px;
+  width: 200px;
+  margin: auto auto;
+  background: red;
+  z-index: 1000;
 }

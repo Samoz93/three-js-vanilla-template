@@ -1,22 +1,3 @@
-uniform float uTime;
-varying vec3 vColor;
-uniform vec3 uColors[5];
-varying vec2 vUv;
-varying vec3 vPosition;
-varying float vPattern;
-uniform float uRadius;
-
-
-//
-// Description : Array and textureless GLSL 2D/3D/4D simplex
-//               noise functions.
-//      Author : Ian McEwan, Ashima Arts.
-//  Maintainer : ijm
-//     Lastmod : 20110822 (ijm)
-//     License : Copyright (C) 2011 Ashima Arts. All rights reserved.
-//               Distributed under the MIT License. See LICENSE file.
-//               https://github.com/ashima/webgl-noise
-//
 
 vec3 mod289(vec3 x) {
   return x - floor(x * (1.0 / 289.0)) * 289.0;
@@ -109,40 +90,3 @@ float snoise(vec3 v)
   return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1),
                                 dot(p2,x2), dot(p3,x3) ) );
   }
-
-
-
-float smoothMod(float axis, float amp, float rad){
-    float top = cos(PI * (axis / amp)) * sin(PI * (axis / amp));
-    float bottom = pow(sin(PI * (axis / amp)), 2.0) + pow(rad, 2.0);
-    float at = atan(top / bottom);
-    return amp * (1.0 / 2.0) - (1.0 / PI) * at;
-}
-
-float fit(float unscaled, float oldMin, float oldMax, float newMin, float newMax){
-    return (unscaled - oldMin) * (newMax - newMin) / (oldMax - oldMin) + newMin;
-}
-
-float wave(vec3 pos){
-    return fit(smoothMod(pos.y * 5.,1.,1.5),0.35,.6,0.,1.);
-}
-
-void main() {
-    vec3 pos = position;
-    vec3 coords = normal;
-    float time = uTime * 0.01;
-
-    coords.y += time ;
-    float noise = snoise(coords + time );
-    coords += noise;
-    float pattern = wave(coords);
-    pos += normal * pattern * uRadius;
-  
-    gl_Position =  projectionMatrix  * modelViewMatrix * vec4(pos, 1.0);
-    
-    csm_PositionRaw =  gl_Position;
-
-    vPosition = pos;
-    vPattern = pattern;
-    vUv = uv;
-}

@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { UpdatableObject3D } from "../abstractions";
 
-export default class Plane extends UpdatableObject3D {
+export class Plane extends UpdatableObject3D {
   objectName: string = "Plane";
 
   constructor() {

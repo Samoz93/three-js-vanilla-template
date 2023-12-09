@@ -20,7 +20,6 @@ export default class BasicShaderToturial extends UpdatableObject3D {
 
   set() {
     const geometry = new THREE.PlaneGeometry(5, 5, 100);
-    console.log(ResourcesUtil.items.colorful_texture);
 
     const material = new THREE.ShaderMaterial({
       vertexShader: new_vertix,

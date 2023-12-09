@@ -10,45 +10,6 @@
       crossorigin="anonymous"
     />
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/10.0.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/10.0.0/firebase-auth-compat.js"></script>
-    <script
-      defer
-      src="/__/firebase/10.0.0/firebase-database-compat.js"
-    ></script>
-    <script
-      defer
-      src="/__/firebase/10.0.0/firebase-firestore-compat.js"
-    ></script>
-    <script
-      defer
-      src="/__/firebase/10.0.0/firebase-functions-compat.js"
-    ></script>
-    <script
-      defer
-      src="/__/firebase/10.0.0/firebase-messaging-compat.js"
-    ></script>
-    <script defer src="/__/firebase/10.0.0/firebase-storage-compat.js"></script>
-    <script
-      defer
-      src="/__/firebase/10.0.0/firebase-analytics-compat.js"
-    ></script>
-    <script
-      defer
-      src="/__/firebase/10.0.0/firebase-remote-config-compat.js"
-    ></script>
-    <script
-      defer
-      src="/__/firebase/10.0.0/firebase-performance-compat.js"
-    ></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
     <base href="/" />
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -56,7 +17,8 @@
     <title>Three.js Boilerplate</title>
   </head>
   <body>
-    <ul class="musicList list-group"></ul>
+    <ul style="visibility: hidden" class="musicList list-group"></ul>
+    <video id="cam-el"></video>
     <div id="experience">
       <canvas class="experience-canvas"></canvas>
     </div>
@@ -71,5 +33,13 @@
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
     integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
     crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.2.1"
+    crossorigin
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.0.5"
+    crossorigin
   ></script>
 </html>

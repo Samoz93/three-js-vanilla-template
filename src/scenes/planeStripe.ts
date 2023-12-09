@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { UpdatableObject3D } from "../abstractions";
 import { gradient_frag, gradient_vertix } from "../shaders";
 
-export default class PlaneStripe extends UpdatableObject3D {
+export class PlaneStripe extends UpdatableObject3D {
   objectName: string = "PlaneStripe";
 
   uniforms: Record<string, THREE.Uniform | { value: number }> = {

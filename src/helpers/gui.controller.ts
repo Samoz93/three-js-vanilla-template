@@ -3,7 +3,6 @@ import GUI from "lil-gui";
 const controllers = {};
 
 export const gui = new GUI();
-
 export const addControllers = (
   folderName: string,
   key: string,

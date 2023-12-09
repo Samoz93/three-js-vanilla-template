@@ -6,9 +6,10 @@ import BakedModel from "../helpers/bakeModel.js";
 import { GlobalUtil } from "../utils/global.js";
 import { ResourcesUtil } from "../utils/resources.js";
 import { TimeUtil } from "../utils/time.js";
-import { ElementAbstract } from "./ElementsAbstract.js";
+import { UpdatableObject3D } from "../abstractions/basic.object.3d.js";
 
-export default class Box extends ElementAbstract {
+export default class Box extends UpdatableObject3D {
+  objectName: string;
   set(): void {
     this.bakeBox();
     this.setBox();

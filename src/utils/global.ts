@@ -3,7 +3,7 @@ import * as THREE from "three";
 class GlobalUtilCls {
   scene = new THREE.Scene();
   constructor() {
-    this.scene.background = new THREE.Color("gray");
+    this.scene.background = new THREE.Color("black");
   }
   canvas;
 

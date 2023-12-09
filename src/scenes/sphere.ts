@@ -6,7 +6,7 @@ import { dissolve_frag, dissolve_vertix } from "../shaders";
 import { UpdatableObject3D } from "../abstractions";
 import { ShaderService } from "../helpers";
 
-export default class MySphere extends UpdatableObject3D {
+export class MySphere extends UpdatableObject3D {
   objectName: string = "Sphere";
 
   uniforms: Record<string, THREE.Uniform | { value: number }> = {

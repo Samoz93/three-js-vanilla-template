@@ -27,6 +27,10 @@ export abstract class UpdatableObject3D {
 
   constructor() {
     TimeUtil.on("update", (data: { delta: number; elapsed: number }) => {
+      if (!this.uniforms.uTime) {
+        this.uniforms.uTime = { value: 0 };
+      }
+      this.uniforms.uTime.value += data.delta * 0.01;
       // Update uTime for all the materials if any
       this.materials?.forEach((material) => {
         if (material.uniforms?.uTime) {
@@ -42,17 +46,17 @@ export abstract class UpdatableObject3D {
   setUniformControllers = () => {
     if (_.isEmpty(this.uniforms)) return;
 
-    _.forEach(this.uniforms, (val, unifromKey) => {
-      if (unifromKey === "uTime") return;
-      const controllerName = this.getControllerName(unifromKey);
+    _.forEach(this.uniforms, (val, uniformKey) => {
+      if (uniformKey === "uTime") return;
+      const controllerName = this.getControllerName(uniformKey);
       addControllers(
         this.objectName ?? "unknown",
         controllerName,
         (val) => {
-          this.uniforms[unifromKey].value = val;
+          this.uniforms[uniformKey].value = val;
         },
         val.value,
-        val.options
+        val.options || {}
       );
     });
   };

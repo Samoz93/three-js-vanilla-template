@@ -2,17 +2,15 @@
 
 // scenes
 import _ from "lodash";
+import { Spherical } from "three";
 import { GlobalUtil } from "../utils/global.js";
 import { ResourcesUtil } from "../utils/resources.js";
-import AudioVis from "./audio.vis.js";
-import AudioVisV2 from "./audio.vis.v2.js";
-import Dancer from "./dancer.js";
 import Environment from "./environment.js";
-import Plane from "./plane.js";
+import ParticlesImage from "./particles.js";
 
 export default class World {
   environment: Environment;
-  objects = [Plane, AudioVis, Dancer, AudioVisV2];
+  objects = [ParticlesImage];
 
   private set(): void {
     ResourcesUtil.on("ready", () => {

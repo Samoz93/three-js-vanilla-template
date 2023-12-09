@@ -18,6 +18,7 @@ export class ShaderService {
       vertexShader: this.shader.vertix,
       fragmentShader: this.shader.frag,
       side: THREE.DoubleSide,
+      wireframe: true,
       uniforms: {
         uTime: { value: 0 },
         ...this.uniforms,

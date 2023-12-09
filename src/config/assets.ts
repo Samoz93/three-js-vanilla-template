@@ -26,10 +26,16 @@ export const assets: { type: ResourcesTypes; path: string; name: string }[] = [
     type: "glbModel",
     path: "models/box2.glb",
   },
+
   {
     name: "iw",
     type: "glbModel",
     path: "models/iw.glb",
+  },
+  {
+    name: "female_model",
+    type: "glbModel",
+    path: "models/female-model.glb",
   },
   {
     name: "iw_texture",
@@ -40,6 +46,11 @@ export const assets: { type: ResourcesTypes; path: string; name: string }[] = [
     name: "colorful_texture",
     type: "normalTexture",
     path: "textures/colorful.avif",
+  },
+  {
+    name: "model_bw",
+    type: "normalTexture",
+    path: "textures/model_bw.webp",
   },
   // {
   //   name: "dna",

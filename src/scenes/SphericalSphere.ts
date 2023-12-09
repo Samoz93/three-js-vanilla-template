@@ -5,7 +5,7 @@ import { ShaderService } from "../helpers";
 import { UpdatableObject3D } from "../abstractions";
 import { spherical_frag, spherical_vertix } from "../shaders";
 import { ResourcesUtil } from "../utils/resources";
-export default class SphericalSphere extends UpdatableObject3D {
+export class SphericalSphere extends UpdatableObject3D {
   objectName: string = "SphericalSphere";
 
   uniforms: Record<string, THREE.Uniform | { value: number }> = {
@@ -33,6 +33,7 @@ export default class SphericalSphere extends UpdatableObject3D {
         color: "red",
         metalness: 0.1,
         roughness: 0.9,
+        wireframe: true,
       })
     );
     const geometry = new THREE.IcosahedronGeometry(1, 100);

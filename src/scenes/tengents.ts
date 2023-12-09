@@ -3,7 +3,7 @@ import { UpdatableObject3D } from "../abstractions";
 import ShaderService from "../helpers/shader.service";
 import { tengents_frag, tengents_vertix } from "../shaders";
 import { ResourcesUtil } from "../utils/resources";
-export default class TengentsObject extends UpdatableObject3D {
+export class TengentsObject extends UpdatableObject3D {
   objectName: string = "PlaneTengents";
 
   uniforms: Record<string, THREE.Uniform<any> | { value: number; options? }> = {
