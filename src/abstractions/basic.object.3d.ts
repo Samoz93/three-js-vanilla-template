@@ -17,7 +17,7 @@ export abstract class UpdatableObject3D {
   uniforms: Record<string, Uniform | { value: number }> = {};
 
   // abstract methods
-  abstract set(): void;
+  abstract setMainMesh(): void;
   abstract resize(): void;
   abstract update(data: { delta: number; elapsed: number }): void;
 

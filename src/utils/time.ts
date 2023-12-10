@@ -8,6 +8,13 @@ class TimeCls extends EventEmitter {
 
   constructor() {
     super();
+    window.addEventListener("pointermove", (e) => {
+      const data = {
+        x: (e.clientX / window.innerWidth) * 2 - 1,
+        y: (e.clientY / window.innerHeight) * 2 - 1,
+      };
+      this.emit("pointermove", data);
+    });
     this.update();
   }
 

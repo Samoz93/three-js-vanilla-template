@@ -11,6 +11,20 @@ class RendererCls {
   };
   webglRenderer: THREE.WebGLRenderer;
 
+  getRenderTarget() {
+    const renderTarget = new THREE.WebGLRenderTarget(
+      SizesUtil.width,
+      SizesUtil.height,
+      {
+        minFilter: THREE.NearestFilter,
+        magFilter: THREE.NearestFilter,
+        format: THREE.RGBAFormat,
+        type: THREE.FloatType,
+      }
+    );
+    return renderTarget;
+  }
+
   private setRenderer() {
     this.webglRenderer = new THREE.WebGLRenderer({
       canvas: GlobalUtil.canvas,
