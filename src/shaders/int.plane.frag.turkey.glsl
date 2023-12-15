@@ -12,7 +12,7 @@ void main() {
     float angle = atan(pos.y, pos.x)  - info.y * circularForce;
 
     vec3 targetPos = vec3(cos(angle), sin(angle), 0) * radius;
-    pos.xy += (targetPos.xy - pos.xy) * .01;
+    pos.xy += (targetPos.xy - pos.xy) * .1;
 
     gl_FragColor =  vec4(pos.xy,1.,1.);
 }

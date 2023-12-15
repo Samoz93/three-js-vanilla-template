@@ -22,8 +22,8 @@ class CameraCls {
       0.1,
       1000
     );
-    this.perspectiveCamera.position.x = 5;
-    this.perspectiveCamera.position.y = 7.5;
+    this.perspectiveCamera.position.x = 0;
+    this.perspectiveCamera.position.y = 0;
     this.perspectiveCamera.position.z = 10;
 
     GlobalUtil.scene.add(this.perspectiveCamera);

@@ -7,7 +7,7 @@ void main() {
     vUv = uv;
     vec4 pos = texture2D(uPosition,vUv);
     float angle = atan(pos.x, pos.y);
-    float colorData = .4+sin(angle-uTime*.1);
+    float colorData = 1.;//.4+sin(angle-uTime*.1);
     vColor = vec4(colorData,colorData,colorData,1.);
 
     vec4 mvPosition =  modelViewMatrix * vec4(pos.xyz, 1.0);
